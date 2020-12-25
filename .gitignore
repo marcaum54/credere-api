@@ -6,6 +6,7 @@ Homestead.json
 Homestead.yaml
 .env
 .phpunit.result.cache
+.phpunit.cache
 
 .history/
 sonda.json

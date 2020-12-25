@@ -1,0 +1,17 @@
+[2020-12-24 14:09:17] local.ERROR: include(K:\projetos\php\credere\vendor\composer/../../app/Console/Kernel.php): failed to open stream: No such file or directory {"exception":"[object] (ErrorException(code: 0): include(K:\\projetos\\php\\credere\\vendor\\composer/../../app/Console/Kernel.php): failed to open stream: No such file or directory at K:\\projetos\\php\\credere\\vendor\\composer\\ClassLoader.php:444)
+[stacktrace]
+#0 K:\\projetos\\php\\credere\\vendor\\composer\\ClassLoader.php(444): Laravel\\Lumen\\Application->Laravel\\Lumen\\Concerns\\{closure}(2, 'include(K:\\\\proj...', 'K:\\\\projetos\\\\php...', 444, Array)
+#1 K:\\projetos\\php\\credere\\vendor\\composer\\ClassLoader.php(444): include()
+#2 K:\\projetos\\php\\credere\\vendor\\composer\\ClassLoader.php(322): Composer\\Autoload\\includeFile('K:\\\\projetos\\\\php...')
+#3 [internal function]: Composer\\Autoload\\ClassLoader->loadClass('App\\\\Console\\\\Ker...')
+#4 [internal function]: spl_autoload_call('App\\\\Console\\\\Ker...')
+#5 K:\\projetos\\php\\credere\\vendor\\illuminate\\container\\Container.php(830): ReflectionClass->__construct('App\\\\Console\\\\Ker...')
+#6 K:\\projetos\\php\\credere\\vendor\\illuminate\\container\\Container.php(712): Illuminate\\Container\\Container->build('App\\\\Console\\\\Ker...')
+#7 K:\\projetos\\php\\credere\\vendor\\illuminate\\container\\Container.php(283): Illuminate\\Container\\Container->resolve('App\\\\Console\\\\Ker...', Array, false)
+#8 K:\\projetos\\php\\credere\\vendor\\illuminate\\container\\Container.php(826): Illuminate\\Container\\Container->Illuminate\\Container\\{closure}(Object(Laravel\\Lumen\\Application), Array)
+#9 K:\\projetos\\php\\credere\\vendor\\illuminate\\container\\Container.php(712): Illuminate\\Container\\Container->build(Object(Closure))
+#10 K:\\projetos\\php\\credere\\vendor\\illuminate\\container\\Container.php(651): Illuminate\\Container\\Container->resolve('Illuminate\\\\Cont...', Array)
+#11 K:\\projetos\\php\\credere\\vendor\\laravel\\lumen-framework\\src\\Application.php(300): Illuminate\\Container\\Container->make('Illuminate\\\\Cont...', Array)
+#12 K:\\projetos\\php\\credere\\artisan(32): Laravel\\Lumen\\Application->make('Illuminate\\\\Cont...')
+#13 {main}
+"} 

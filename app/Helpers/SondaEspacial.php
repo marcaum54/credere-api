@@ -104,24 +104,18 @@ class SondaEspacial extends SondaAbstract
         $this->$metodo($posicaoAtual);
     }
 
-    public function executarComandos(Array $comandos, $debug = false)
+    public function executarComandos(Array $comandos)
     {
         $posicaoAtual = $this->getPosicaoAtual();
 
         try
         {
-            if($debug)
-                $this->debug();
-
             foreach($comandos as $comando)
             {
                 $this->validarComando($comando);
 
                 $metodo = self::COMANDOS[$comando];
                 $this->$metodo();
-
-                if($debug)
-                    $this->debug();
             }
 
             return $this->getPosicaoAtual();
@@ -133,35 +127,5 @@ class SondaEspacial extends SondaAbstract
                 'erro' => $e->getMessage(),
             ];
         }
-    }
-
-    public function debug()
-    {
-        $sentidos = [
-            'C' => '&uarr;',
-            'D' => '&rarr;',
-            'B' => '&darr;',
-            'E' => '&larr;',
-        ];
-
-        $ambiente = $this->getAmbiente();
-
-        $reserso = array_reverse($ambiente);
-
-        echo '<table style="float: left; margin: 0 10px 10px 0; border: 1px solid #333; border-collapse: collapse;">';
-        foreach($reserso as $y => $colunas)
-        {
-            echo '<tr>';
-            foreach($colunas as $x => $sentido)
-            {
-                $r = SondaAbstract::AMBIENTE_TAMANHO - $y - 1;
-                $css = $sentido ? 'background-color: red; color: #FFF;': '';
-                echo '<td style="padding: 5px; text-align: center; border: 1px solid #333; '. $css .'">';
-                echo $sentido ? $sentidos[$sentido] : "({$x}, $r)";
-                echo '</td>';
-            }
-            echo '</tr>';
-        }
-        echo '</table>';
     }
 }

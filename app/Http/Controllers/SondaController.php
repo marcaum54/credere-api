@@ -26,12 +26,8 @@ class SondaController extends Controller
 
         if($comandos)
         {
-            $debug = !empty($request->get('debug'));
-            $posicaoAtual = $this->sonda->executarComandos($comandos, $debug);
+            $posicaoAtual = $this->sonda->executarComandos($comandos);
         }
-
-        if($debug)
-            return '';
 
         return response()->json($posicaoAtual);
     }
