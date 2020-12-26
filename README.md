@@ -50,10 +50,12 @@ https://credere-api.herokuapp.com/
 1. `git clone https://github.com/marcaum54/credere-api`
 2. `cd credere-api`
 3. `composer install`
-4. `php -S localhost:8000 -t`
+4. `php -S localhost:8000 -t public`
 
 # Testes
 
 Utilizei o corverage para acompanhar se os testes estavam cobrindo todo o código que eu produzi.
 
-Caso queria acessar, basta clicar no link a seguir: https://credere-api.herokuapp.com/coverage/
+Dentro do projeto tem uma pasta ```/coverage``` com o relatório em HTML que mostra a cobertura com detalhes.
+
+Para rodar os testes para rodar o seguinte comando: ```vendor\bin\phpunit```
