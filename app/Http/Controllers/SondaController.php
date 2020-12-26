@@ -17,17 +17,16 @@ class SondaController extends Controller
     public function resetar()
     {
         $this->sonda->resetar();
+        return response('', 204);
     }
 
     public function executarComandos(Request $request)
     {
-        $comandos = $request->get('c');
+        $comandos = $request->input('comandos');
         $posicaoAtual = $this->sonda->getPosicaoAtual();
 
         if($comandos)
-        {
             $posicaoAtual = $this->sonda->executarComandos($comandos);
-        }
 
         return response()->json($posicaoAtual);
     }

@@ -18,6 +18,6 @@ $router->get('/', function ()
     return 'Credere Sonda API: Online';
 });
 
-$router->get('/resetar', 'SondaController@resetar');
-$router->get('/executar-comandos', 'SondaController@executarComandos');
+$router->delete('/resetar', 'SondaController@resetar');
+$router->put('/executar-comandos', 'SondaController@executarComandos');
 $router->get('/posicao-atual', 'SondaController@posicaoAtual');

@@ -4,19 +4,17 @@ class SondaControllerTest extends TestCase
 {
     public function testResetar()
     {
-        $this->get('/resetar');
-        $this->assertResponseStatus(200, $this->response->status());
+        $this->delete('/resetar');
+        $this->assertResponseStatus(204, $this->response->status());
     }
 
     public function testExecutarComandos()
     {
-        $this->get('/resetar');
+        $this->delete('/resetar');
 
-        $comandos = http_build_query([
-            'c' => ['GE', 'M', 'M', 'M', 'GD', 'M', 'M']
-        ]);
+        $comandos = ['GE', 'M', 'M', 'M', 'GD', 'M', 'M'];
 
-        $this->get("/executar-comandos?{$comandos}")->seeJsonEquals([
+        $this->put("/executar-comandos", compact('comandos'))->seeJsonEquals([
             'x' => 2,
             'y' => 3,
             'sentido' => 'D'
@@ -25,59 +23,51 @@ class SondaControllerTest extends TestCase
 
     public function testExecutarComandosErroEixoX()
     {
-        $this->get('/resetar');
+        $this->delete('/resetar');
 
-        $comandos = http_build_query([
-            'c' => ['M', 'M', 'M', 'M', 'M']
-        ]);
+        $comandos = ['M', 'M', 'M', 'M', 'M'];
 
-        $this->get("/executar-comandos?{$comandos}")->seeJsonEquals([
+        $this->put("/executar-comandos", compact('comandos'))->seeJsonEquals([
             'erro' => 'A sonda não pode mais se mover no eixo: X',
         ]);
     }
 
     public function testExecutarComandosErroEixoY()
     {
-        $this->get('/resetar');
+        $this->delete('/resetar');
 
-        $comandos = http_build_query([
-            'c' => ['GE', 'M', 'M', 'M', 'M', 'M']
-        ]);
+        $comandos = ['GE', 'M', 'M', 'M', 'M', 'M'];
 
-        $this->get("/executar-comandos?{$comandos}")->seeJsonEquals([
+        $this->put("/executar-comandos", compact('comandos'))->seeJsonEquals([
             'erro' => 'A sonda não pode mais se mover no eixo: Y',
         ]);
     }
 
     public function testExecutarComandosErroComandoNaoExiste()
     {
-        $this->get('/resetar');
+        $this->delete('/resetar');
 
-        $comandos = http_build_query([
-            'c' => ['XXX']
-        ]);
+        $comandos = ['XXX'];
 
-        $this->get("/executar-comandos?{$comandos}")->seeJsonEquals([
+        $this->put("/executar-comandos", compact('comandos'))->seeJsonEquals([
             'erro' => "O comando 'XXX' não existe",
         ]);
     }
 
     public function testPosicaoAtual()
     {
-        $this->get('/resetar');
+        $this->delete('/resetar');
 
-        $comandos = http_build_query([
-            'c' => [
-                'GE', 'GE', 'GE', 'GE',
-                'GD', 'GD', 'GD', 'GD',
-                'GE', 'M', 'M', 'M', 'M',
-                'GD', 'M', 'M', 'M', 'M',
-                'GD', 'M', 'M', 'M', 'M',
-                'GD', 'M', 'M', 'M', 'M',
-            ]
-        ]);
+        $comandos = [
+            'GE', 'GE', 'GE', 'GE',
+            'GD', 'GD', 'GD', 'GD',
+            'GE', 'M', 'M', 'M', 'M',
+            'GD', 'M', 'M', 'M', 'M',
+            'GD', 'M', 'M', 'M', 'M',
+            'GD', 'M', 'M', 'M', 'M',
+        ];
 
-        $this->get("/executar-comandos?{$comandos}");
+        $this->put("/executar-comandos", compact('comandos'));
 
         $this->get("/posicao-atual")->seeJsonEquals([
             'x' => 0,

@@ -32,7 +32,6 @@ abstract class SondaAbstract
     ];
 
     const ERRO_COMANDO_NAO_EXISTE = "O comando '?' não existe";
-    const ERRO_SENTIDO_NAO_EXISTE = "A posição '?' não existe";
     const ERRO_MOVER_LIMITE = "A sonda não pode mais se mover no eixo: ?";
 
     const JSON_PATH = __DIR__ . '/../../../sonda.json';

@@ -1,24 +1,59 @@
-# Lumen PHP Framework
-![Codecov](https://img.shields.io/codecov/c/github/marcaum54/credere-api?style=flat-square)
-[![Build Status](https://travis-ci.org/laravel/lumen-framework.svg)](https://travis-ci.org/laravel/lumen-framework)
-[![Total Downloads](https://img.shields.io/packagist/dt/laravel/framework)](https://packagist.org/packages/laravel/lumen-framework)
-[![Latest Stable Version](https://img.shields.io/packagist/v/laravel/framework)](https://packagist.org/packages/laravel/lumen-framework)
-[![License](https://img.shields.io/packagist/l/laravel/framework)](https://packagist.org/packages/laravel/lumen-framework)
+# Credere API
 
-Laravel Lumen is a stunningly fast PHP micro-framework for building web applications with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Lumen attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as routing, database abstraction, queueing, and caching.
+https://credere-api.herokuapp.com/public/
 
-## Official Documentation
+#Endpoints
 
-Documentation for the framework can be found on the [Lumen website](https://lumen.laravel.com/docs).
+## DELETE /public/resetar
 
-## Contributing
+> Reinicia o cenário colocando a sonda no ponto inicial
+>
+> **Retorno**
+>
+> _Status: 204 - No Content_
 
-Thank you for considering contributing to Lumen! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## PUT /public/executar-comandos
 
-## Security Vulnerabilities
+> Recebe uma sequência de comandos a serem executados:
+>
+> **Parâmetros**
+>
+> -   comandos - Array
+>     -   **M**: Mover a sonda uma casa a frente no atual sentido
+>     -   **GD**: Girar 90 graus a DIREITA
+>     -   **GE**: Girar 90 graus a ESQUERDA
+>
+> **Retorno**
+>
+> _Status: 200 - OK_ > _(application/json)_
+>
+> Caso seja informada uma sequência válida de comandos é retornada a posição atual da sonda após a execução da mesma.
+>
+> _Ex: { x: 0, y: 4, sentido: 'B' }_
+>
+> Caso contrário é retornado o motivo do erro
+>
+> _Ex: { erro: 'A sonda não pode mais se mover no eixo: X' }_
 
-If you discover a security vulnerability within Lumen, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
+## GET /public/posicao-atual
 
-## License
+> **Retorno**
+>
+> _Status: 200 - OK_ > _(application/json)_
+>
+> Retorna a posição atual da sonda
+>
+> _Ex: { x: 2, y: 4, sentido: 'C' }_
 
-The Lumen framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+# Instalar
+
+1. `git clone https://github.com/marcaum54/credere-api`
+2. `cd credere-api`
+3. `composer install`
+4. `php -S localhost:8000 -t`
+
+# Testes
+
+Utilizei o corverage para acompanhar se os testes estavam cobrindo todo o código que eu produzi.
+
+Caso queria acessar, basta clicar no link a seguir: https://credere-api.herokuapp.com/coverage/
