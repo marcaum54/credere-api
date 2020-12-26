@@ -1,10 +1,10 @@
 # Credere API
 
-https://credere-api.herokuapp.com/public/
+https://credere-api.herokuapp.com/
 
 #Endpoints
 
-## DELETE /public/resetar
+## DELETE /resetar
 
 > Reinicia o cenário colocando a sonda no ponto inicial
 >
@@ -12,7 +12,7 @@ https://credere-api.herokuapp.com/public/
 >
 > _Status: 204 - No Content_
 
-## PUT /public/executar-comandos
+## PUT /executar-comandos
 
 > Recebe uma sequência de comandos a serem executados:
 >
@@ -35,7 +35,7 @@ https://credere-api.herokuapp.com/public/
 >
 > _Ex: { erro: 'A sonda não pode mais se mover no eixo: X' }_
 
-## GET /public/posicao-atual
+## GET /posicao-atual
 
 > **Retorno**
 >
