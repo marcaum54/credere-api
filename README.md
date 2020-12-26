@@ -2,7 +2,7 @@
 
 https://credere-api.herokuapp.com/
 
-#Endpoints
+# Endpoints
 
 ## DELETE /resetar
 
@@ -11,6 +11,10 @@ https://credere-api.herokuapp.com/
 > **Retorno**
 >
 > _Status: 204 - No Content_
+>
+> **cURL**
+>
+> ```curl --location --request DELETE 'https://credere-api.herokuapp.com/resetar'```
 
 ## PUT /executar-comandos
 
@@ -34,6 +38,20 @@ https://credere-api.herokuapp.com/
 > Caso contrário é retornado o motivo do erro
 >
 > _Ex: { erro: 'A sonda não pode mais se mover no eixo: X' }_
+>
+> **cURL**
+>
+> ```
+> curl --location --request PUT 'https://credere-api.herokuapp.com/executar-comandos' \
+> --header 'Content-Type: application/x-www-form-urlencoded' \
+> --data-urlencode 'comandos[]=GE' \
+> --data-urlencode 'comandos[]=M' \
+> --data-urlencode 'comandos[]=M' \
+> --data-urlencode 'comandos[]=M' \
+> --data-urlencode 'comandos[]=GD' \
+> --data-urlencode 'comandos[]=M' \
+> --data-urlencode 'comandos[]=M'
+> ```
 
 ## GET /posicao-atual
 
@@ -44,6 +62,10 @@ https://credere-api.herokuapp.com/
 > Retorna a posição atual da sonda
 >
 > _Ex: { x: 2, y: 4, sentido: 'C' }_
+>
+> **cURL**
+>
+> ```curl --location --request GET 'https://credere-api.herokuapp.com/posicao-atual'```
 
 # Instalar
 
